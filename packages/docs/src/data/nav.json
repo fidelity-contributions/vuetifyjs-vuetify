@@ -68,7 +68,9 @@
       "elevation",
       "flex",
       "float",
+      "opacity",
       "overflow",
+      "position",
       "sizing",
       "spacing",
       "text-and-typography"
@@ -211,6 +213,7 @@
       "resize",
       "ripple",
       "scroll",
+      "tooltip",
       "touch"
     ]
   },
@@ -229,6 +232,10 @@
         "subfolder": "components"
       },
       {
+        "title": "date-inputs",
+        "subfolder": "components"
+      },
+      {
         "title": "empty-states",
         "subfolder": "components"
       },
@@ -238,6 +245,10 @@
       },
       {
         "title": "number-inputs",
+        "subfolder": "components"
+      },
+      {
+        "title": "pull-to-refresh",
         "subfolder": "components"
       },
       {
