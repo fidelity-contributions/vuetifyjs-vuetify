@@ -82,7 +82,7 @@
           min-height="300"
           rounded="0"
         >
-          <div class="flex-fill">
+          <div class="flex-fill w-100">
             <slot />
           </div>
         </v-sheet>
@@ -122,7 +122,7 @@
         </div>
 
         <div v-if="script" class="pa-2 pt-0">
-          <AppMarkup :code="script" language="js" />
+          <AppMarkup :code="script" lang="js" />
         </div>
       </div>
     </v-expand-transition>
