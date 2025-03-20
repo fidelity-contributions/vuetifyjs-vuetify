@@ -17,6 +17,7 @@ import { genericComponent, omit, propsFactory, useRender } from '@/util'
 
 // Types
 import { VTreeviewSymbol } from './shared'
+import type { ToggleListItemSlot } from './shared'
 import type { VListItemSlots } from '@/components/VList/VListItem'
 
 export const makeVTreeviewItemProps = propsFactory({
@@ -27,9 +28,7 @@ export const makeVTreeviewItemProps = propsFactory({
 }, 'VTreeviewItem')
 
 export type VTreeviewItemSlots = VListItemSlots & {
-  toggle: {
-    props: { onClick: (e: PointerEvent) => void }
-  }
+  toggle: ToggleListItemSlot
 }
 
 export const VTreeviewItem = genericComponent<VTreeviewItemSlots>()({
@@ -60,12 +59,6 @@ export const VTreeviewItem = genericComponent<VTreeviewItemSlots>()({
       (props.link || vListItemRefIsClickable.value || isActivatableGroupActivator.value)
     )
     const isFiltered = computed(() => visibleIds.value && !visibleIds.value.has(toRaw(vListItemRef.value?.id)))
-
-    const toggleProps = computed(() => ({
-      props: {
-        onClick: onClickAction,
-      },
-    }))
 
     function activateGroupActivator (e: MouseEvent | KeyboardEvent) {
       if (isClickable.value && isActivatableGroupActivator.value) {
@@ -144,7 +137,12 @@ export const VTreeviewItem = genericComponent<VTreeviewItemSlots>()({
                               },
                             }}
                           >
-                            { slots.toggle(toggleProps.value) }
+                            { slots.toggle({
+                              ...slotProps,
+                              props: {
+                                onClick: onClickAction,
+                              },
+                            }) }
                           </VDefaultsProvider>
                         )}
                       </>
