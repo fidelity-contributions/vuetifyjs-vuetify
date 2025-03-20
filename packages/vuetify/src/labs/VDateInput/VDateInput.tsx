@@ -45,8 +45,8 @@ export const makeVDateInputProps = propsFactory({
     prependIcon: '$calendar',
   }),
   ...omit(makeVDatePickerProps({
-    weeksInMonth: 'dynamic' as const,
     hideHeader: true,
+    showAdjacentMonths: true,
   }), ['active', 'location', 'rounded']),
 }, 'VDateInput')
 
@@ -88,11 +88,11 @@ export const VDateInput = genericComponent<VDateInputSlots>()({
         const end = value[value.length - 1]
 
         return adapter.isValid(start) && adapter.isValid(end)
-          ? `${adapter.format(start, 'keyboardDate')} - ${adapter.format(end, 'keyboardDate')}`
+          ? `${adapter.format(adapter.date(start), 'keyboardDate')} - ${adapter.format(adapter.date(end), 'keyboardDate')}`
           : ''
       }
 
-      return adapter.isValid(model.value) ? adapter.format(model.value, 'keyboardDate') : ''
+      return adapter.isValid(model.value) ? adapter.format(adapter.date(model.value), 'keyboardDate') : ''
     })
 
     const isInteractive = computed(() => !props.disabled && !props.readonly)
@@ -108,7 +108,7 @@ export const VDateInput = genericComponent<VDateInputSlots>()({
 
       const target = e.target as HTMLInputElement
 
-      model.value = target.value
+      model.value = target.value === '' ? null : target.value
     }
 
     function onClick (e: MouseEvent) {
@@ -156,6 +156,7 @@ export const VDateInput = genericComponent<VDateInputSlots>()({
                   v-model={ menu.value }
                   activator="parent"
                   min-width="0"
+                  eager={ isFocused.value }
                   location={ props.location }
                   closeOnContentClick={ false }
                   openOnClick={ false }

@@ -12,7 +12,7 @@ meta:
 
 🖊️ Eric Sarrion • 📅 February 21st, 2025
 
-<VoPromotionsCardVuetify />
+<PromotedEntry />
 
 ---
 
@@ -404,7 +404,7 @@ The app.vue component is modified to integrate the navigation menu:
       <v-list-item
         @click="navigateTo('/contact')"
         title="Contact"
-        repend-icon="mdi-email"
+        prepend-icon="mdi-email"
       ></v-list-item>
     </v-list>
   </v-navigation-drawer>

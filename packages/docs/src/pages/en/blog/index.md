@@ -12,11 +12,19 @@ meta:
 
 Latest news, updates, and stories about Vuetify.
 
-<VoPromotionsCardVuetify />
+<PromotedEntry />
 
 ---
 
 <br>
+
+## State of the Union 2024 - Post Mortem
+
+🖊️ John Leider • 📅 March 19th, 2025
+
+A lot has changed since the 2024 State of the Union. In this post, I want to share the journey we've been on, the challenges we've faced, and the incredible team that's come together to shape Vuetify's future. From nearly losing it all to finding renewed purpose and energy, this is a story of resilience, community, and a shared vision for what Vuetify can become... { .text-medium-emphasis }
+
+[Read More](/blog/state-of-the-union-2024-post-mortem/) { .text-end }
 
 ## Building a Basic Nuxt Application with Vuetify
 

@@ -13,7 +13,7 @@ import { IconValue } from '@/composables/icons'
 
 // Utilities
 import { computed, inject, ref, toRaw } from 'vue'
-import { EventProp, genericComponent, omit, propsFactory, useRender } from '@/util'
+import { genericComponent, omit, propsFactory, useRender } from '@/util'
 
 // Types
 import { VTreeviewSymbol } from './shared'
@@ -21,7 +21,6 @@ import type { VListItemSlots } from '@/components/VList/VListItem'
 
 export const makeVTreeviewItemProps = propsFactory({
   loading: Boolean,
-  onToggleExpand: EventProp<[MouseEvent]>(),
   toggleIcon: IconValue,
 
   ...makeVListItemProps({ slim: true }),
@@ -29,7 +28,7 @@ export const makeVTreeviewItemProps = propsFactory({
 
 export type VTreeviewItemSlots = VListItemSlots & {
   toggle: {
-    props: { onClick?: (e: MouseEvent) => void }
+    props: { onClick: (e: PointerEvent) => void }
   }
 }
 
@@ -38,7 +37,11 @@ export const VTreeviewItem = genericComponent<VTreeviewItemSlots>()({
 
   props: makeVTreeviewItemProps(),
 
-  setup (props, { slots }) {
+  emits: {
+    toggleExpand: (value: PointerEvent) => true,
+  },
+
+  setup (props, { slots, emit }) {
     const visibleIds = inject(VTreeviewSymbol, { visibleIds: ref() }).visibleIds
 
     const vListItemRef = ref<VListItem>()
@@ -60,7 +63,7 @@ export const VTreeviewItem = genericComponent<VTreeviewItemSlots>()({
 
     const toggleProps = computed(() => ({
       props: {
-        onClick: props.onToggleExpand,
+        onClick: onClickAction,
       },
     }))
 
@@ -68,6 +71,11 @@ export const VTreeviewItem = genericComponent<VTreeviewItemSlots>()({
       if (isClickable.value && isActivatableGroupActivator.value) {
         vListItemRef.value?.activate(!vListItemRef.value?.isActivated, e)
       }
+    }
+
+    function onClickAction (e: PointerEvent) {
+      e.preventDefault()
+      emit('toggleExpand', e)
     }
 
     useRender(() => {
@@ -105,7 +113,7 @@ export const VTreeviewItem = genericComponent<VTreeviewItemSlots>()({
                             icon={ props.toggleIcon }
                             loading={ props.loading }
                             variant="text"
-                            onClick={ props.onToggleExpand }
+                            onClick={ onClickAction }
                           >
                             {{
                               loader () {
