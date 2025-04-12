@@ -122,8 +122,8 @@
               <span v-if="expanded">When do you want to travel?</span>
               <v-row
                 v-else
-                style="width: 100%"
                 density="compact"
+                style="width: 100%"
               >
                 <v-col class="d-flex justify-start" cols="6">
                   Start date: {{ trip.start || 'Not set' }}
@@ -138,8 +138,8 @@
       </v-expansion-panel-title>
       <v-expansion-panel-text>
         <v-row
-          justify="space-around"
           density="compact"
+          justify="space-around"
         >
           <v-col cols="3">
             <v-text-field

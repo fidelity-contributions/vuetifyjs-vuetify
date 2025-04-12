@@ -7,8 +7,8 @@
   >
     <v-responsive min-height="500">
       <v-row
-        justify="center"
         density="comfortable"
+        justify="center"
       >
         <v-col
           v-for="sponsor in sponsors"

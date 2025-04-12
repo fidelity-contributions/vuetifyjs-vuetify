@@ -2,8 +2,8 @@
   <v-container class="bg-grey-lighten-5">
     <v-row
       class="mb-6"
-      justify="center"
       density="compact"
+      justify="center"
     >
       <v-col lg="2">
         <v-card

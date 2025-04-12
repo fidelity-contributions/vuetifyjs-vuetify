@@ -5,8 +5,8 @@
     >
       <v-row
         align="start"
-        style="height: 150px;"
         density="compact"
+        style="height: 150px;"
       >
         <v-col
           v-for="n in 3"
@@ -24,8 +24,8 @@
     >
       <v-row
         align="center"
-        style="height: 150px;"
         density="compact"
+        style="height: 150px;"
       >
         <v-col
           v-for="n in 3"
@@ -43,8 +43,8 @@
     >
       <v-row
         align="end"
-        style="height: 150px;"
         density="compact"
+        style="height: 150px;"
       >
         <v-col
           v-for="n in 3"
@@ -59,8 +59,8 @@
 
     <v-container class="bg-surface-variant">
       <v-row
-        style="height: 150px;"
         density="compact"
+        style="height: 150px;"
       >
         <v-col align-self="start">
           <v-sheet class="pa-2 ma-2">
