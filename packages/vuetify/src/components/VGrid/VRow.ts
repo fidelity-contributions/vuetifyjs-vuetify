@@ -3,6 +3,7 @@ import './VGrid.sass'
 
 // Composables
 import { makeComponentProps } from '@/composables/component'
+import { makeDensityProps } from '@/composables/density'
 import { breakpoints } from '@/composables/display'
 import { makeTagProps } from '@/composables/tag'
 
@@ -13,7 +14,6 @@ import { deprecate, genericComponent, propsFactory } from '@/util'
 // Types
 import type { Prop, PropType } from 'vue'
 import type { Breakpoint } from '@/composables/display'
-import { makeDensityProps } from '@/composables/density'
 
 const ALIGNMENT = ['start', 'end', 'center'] as const
 
