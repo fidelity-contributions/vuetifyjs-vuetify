@@ -1,6 +1,8 @@
+@use 'sass:map'
 @use '../../styles/settings'
 @use '../../styles/tools'
 @use './mixins' as *
+@use './utilities'
 
 @include tools.layer('components')
   .v-container
@@ -24,13 +26,13 @@
     & + .v-row
       margin-top: settings.$grid-gutter * .5
 
-      &--dense
+      &--density-comfortable
         margin-top: settings.$form-grid-gutter * .5
 
-    &--dense
+    &--density-comfortable
       @include make-row(settings.$form-grid-gutter)
 
-    &.v-row--no-gutters
+    &.v-row--density-compact
       @include make-row(0)
 
   .v-spacer
@@ -40,3 +42,14 @@
   //
   // Common styles for small and large grid columns
   @include make-grid-columns
+
+  @each $breakpoint in map.keys(settings.$grid-breakpoints)
+    // Generate media query
+    @include tools.media-breakpoint-up($breakpoint)
+      $infix: tools.breakpoint-infix($breakpoint, settings.$grid-breakpoints)
+      // Loop over each v-row property
+      @each $key, $utility in utilities.$v-row-utils
+         @include tools.generate-utility($utility, $infix, 'bidi')
+      // Loop over each v-col property
+      @each $key, $utility in utilities.$v-col-utils
+         @include tools.generate-utility($utility, $infix, 'bidi')

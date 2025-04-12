@@ -63,34 +63,34 @@
 
       // Standard columns with default gap
       @for $i from 1 through $columns
-        :where(.v-row:not(.v-row--dense):not(.v-row--no-gutters)) > .v-col#{$infix}-#{$i}
+        :where(.v-row.v-row--density-default) > .v-col#{$infix}-#{$i}
           @include make-col($i, $columns, settings.$grid-gutter)
 
       // Dense row columns
       @for $i from 1 through $columns
-        .v-row--dense:where(:not(.v-row--no-gutters)) > .v-col#{$infix}-#{$i}
+        .v-row--density-comfortable > .v-col#{$infix}-#{$i}
           @include make-col($i, $columns, settings.$form-grid-gutter)
 
       // No-gutters columns
       @for $i from 1 through $columns
-        .v-row--no-gutters > .v-col#{$infix}-#{$i}
+        .v-row--density-compact > .v-col#{$infix}-#{$i}
           @include make-col($i, $columns, 0px)
 
       // Standard offsets with default gap
       @for $i from 0 through $columns - 1
         @if not ($infix == "" and $i == 0)
           // Avoid emitting useless .offset-0
-          :where(.v-row:not(.v-row--dense):not(.v-row--no-gutters)) > .offset#{$infix}-#{$i}
+          :where(.v-row.v-row--density-default) > .offset#{$infix}-#{$i}
             @include make-col-offset($i, $columns, settings.$grid-gutter)
 
       // Dense row offsets
       @for $i from 0 through $columns - 1
         @if not ($infix == "" and $i == 0)
-          .v-row--dense:where(:not(.v-row--no-gutters)) > .offset#{$infix}-#{$i}
+          .v-row--density-comfortable > .offset#{$infix}-#{$i}
             @include make-col-offset($i, $columns, settings.$form-grid-gutter)
 
       // No-gutters offsets
       @for $i from 0 through $columns - 1
         @if not ($infix == "" and $i == 0)
-          .v-row--no-gutters > .offset#{$infix}-#{$i}
+          .v-row--density-compact > .offset#{$infix}-#{$i}
             @include make-col-offset($i, $columns, 0px)
