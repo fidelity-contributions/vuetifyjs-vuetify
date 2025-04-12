@@ -19,7 +19,7 @@
   //
   // Rows contain and clear the floats of your columns.
   .v-row
-    @include make-row
+    @include make-row(settings.$grid-gutter)
 
     & + .v-row
       margin-top: settings.$grid-gutter * .5
@@ -28,19 +28,10 @@
         margin-top: settings.$form-grid-gutter * .5
 
     &--dense
-      margin: -(settings.$form-grid-gutter) * .5
+      @include make-row(settings.$form-grid-gutter)
 
-      > .v-col,
-      > [class*="v-col-"]
-        padding: settings.$form-grid-gutter * .5
-
-    // Remove the negative margin from default .v-row, then the horizontal padding
-    // from all immediate children columns (to prevent runaway style inheritance).
     &.v-row--no-gutters
-      margin: 0
-      > .v-col,
-      > [class*="v-col-"]
-        padding: 0
+      @include make-row(0)
 
   .v-spacer
     flex-grow: 1
