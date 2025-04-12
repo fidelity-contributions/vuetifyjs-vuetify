@@ -2,7 +2,7 @@
   <v-container class="bg-surface-variant">
     <v-row
       class="mb-6"
-      no-gutters
+      density="compact"
     >
       <v-col
         md="6"
@@ -23,7 +23,7 @@
         </v-sheet>
       </v-col>
     </v-row>
-    <v-row no-gutters>
+    <v-row density="compact">
       <v-col
         lg="6"
         md="5"

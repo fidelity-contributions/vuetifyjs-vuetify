@@ -6,7 +6,7 @@
           Level 1: .v-col-8
         </v-sheet>
 
-        <v-row class="bg-red" no-gutters>
+        <v-row class="bg-red" density="compact">
           <v-col
             cols="8"
           >

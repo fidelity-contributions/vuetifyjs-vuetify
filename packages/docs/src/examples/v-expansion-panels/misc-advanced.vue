@@ -3,7 +3,7 @@
     <v-expansion-panel>
       <v-expansion-panel-title>
         <template v-slot:default="{ expanded }">
-          <v-row no-gutters>
+          <v-row density="comfortable">
             <v-col class="d-flex justify-start" cols="4">
               Trip name
             </v-col>
@@ -40,7 +40,7 @@
 
     <v-expansion-panel>
       <v-expansion-panel-title v-slot="{ expanded }">
-        <v-row no-gutters>
+        <v-row density="comfortable">
           <v-col class="d-flex justify-start" cols="4">
             Location
           </v-col>
@@ -66,7 +66,7 @@
         </v-row>
       </v-expansion-panel-title>
       <v-expansion-panel-text>
-        <v-row no-gutters>
+        <v-row density="comfortable">
           <v-spacer></v-spacer>
           <v-col cols="5">
             <v-select
@@ -110,7 +110,7 @@
 
     <v-expansion-panel>
       <v-expansion-panel-title v-slot="{ expanded }">
-        <v-row no-gutters>
+        <v-row density="comfortable">
           <v-col class="d-flex justify-start" cols="4">
             Start and end dates
           </v-col>
@@ -123,7 +123,7 @@
               <v-row
                 v-else
                 style="width: 100%"
-                no-gutters
+                density="compact"
               >
                 <v-col class="d-flex justify-start" cols="6">
                   Start date: {{ trip.start || 'Not set' }}
@@ -139,7 +139,7 @@
       <v-expansion-panel-text>
         <v-row
           justify="space-around"
-          no-gutters
+          density="compact"
         >
           <v-col cols="3">
             <v-text-field

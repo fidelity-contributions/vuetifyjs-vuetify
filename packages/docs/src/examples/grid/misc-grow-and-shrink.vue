@@ -2,7 +2,7 @@
   <v-container class="bg-surface-variant">
     <v-row
       class="mb-6"
-      no-gutters
+      density="compact"
     >
       <v-col>
         <v-sheet class="pa-2 ma-2">
@@ -29,7 +29,7 @@
       </v-col>
     </v-row>
 
-    <v-row no-gutters>
+    <v-row density="compact">
       <v-col cols="8">
         <v-sheet class="pa-2 ma-2">
           .v-col-8

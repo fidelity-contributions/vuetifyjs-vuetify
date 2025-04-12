@@ -1,6 +1,6 @@
 <template>
   <v-container class="bg-surface-variant">
-    <v-row no-gutters>
+    <v-row density="compact">
       <v-col order="6">
         <v-sheet class="pa-2 ma-2">
           First in markup, but middle in row
