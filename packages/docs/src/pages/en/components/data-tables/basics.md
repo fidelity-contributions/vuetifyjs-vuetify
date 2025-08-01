@@ -210,9 +210,19 @@ You can use the dynamic slots `item.<key>` to customize only certain columns. `<
 
 #### Group header slot
 
-When using the **group-by** prop, you can customize the group header with the `group-header` slot.
+When using the **group-by** prop, you can customize the group header with the `group-header` slot. Example below makes the whole row clickable.
 
 <ExamplesExample file="v-data-table/slot-group-header" />
+
+#### Group summary slot
+
+::: info
+This feature requires [v3.9.4](/getting-started/release-notes/?version=v3.9.4)
+:::
+
+By default grouping with **group-by** shows only the header slot. When you define `group-summary` slot, additional summary row will appear below the group rows.
+
+<ExamplesExample file="v-data-table/slot-group-summary" />
 
 #### Loading slot
 

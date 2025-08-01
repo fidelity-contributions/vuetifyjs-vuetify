@@ -7,25 +7,13 @@
     item-value="name"
     hide-default-footer
   >
-    <template v-slot:group-header="{ item, columns, toggleGroup, isGroupOpen }">
-      <tr>
-        <td
-          :colspan="columns.length"
-          class="cursor-pointer"
-          v-ripple
-          @click="toggleGroup(item)"
-        >
-          <div class="d-flex align-center">
-            <v-btn
-              :icon="isGroupOpen(item) ? '$expand' : '$next'"
-              color="medium-emphasis"
-              density="comfortable"
-              size="small"
-              variant="outlined"
-            ></v-btn>
-
-            <span class="ms-4">Tool Type: {{ item.value }}</span>
-          </div>
+    <template v-slot:group-summary="{ item, columns }">
+      <tr class="font-weight-bold text-red">
+        <td v-for="c in columns" :key="c.key" :class="['v-data-table__td', c.align ? `v-data-table-column--align-${c.align}` : '']">
+          <span v-if="c.key === 'name'">Totals</span>
+          <span v-if="c.key === 'weight'">{{ item.items.reduce((sum, n) => sum + n.raw.weight, 0) }}</span>
+          <span v-if="c.key === 'length'">{{ item.items.reduce((sum, n) => sum + n.raw.length, 0) }}</span>
+          <span v-if="c.key === 'price'">{{ item.items.reduce((sum, n) => sum + n.raw.price, 0) }}</span>
         </td>
       </tr>
     </template>
@@ -36,15 +24,10 @@
   const groupBy = [{ key: 'type', order: 'asc' }]
 
   const headers = [
-    {
-      title: 'Tool Name',
-      align: 'start',
-      sortable: false,
-      key: 'name',
-    },
-    { title: 'Weight(kg)', key: 'weight' },
-    { title: 'Length(cm)', key: 'length' },
-    { title: 'Price($)', key: 'price' },
+    { title: 'Tool Name', sortable: false, key: 'name' },
+    { title: 'Weight(kg)', key: 'weight', align: 'end' },
+    { title: 'Length(cm)', key: 'length', align: 'end' },
+    { title: 'Price($)', key: 'price', align: 'end' },
   ]
 
   const tools = [
@@ -65,22 +48,12 @@
   export default {
     data () {
       return {
-        groupBy: [
-          {
-            key: 'type',
-            order: 'asc',
-          },
-        ],
+        groupBy: [{ key: 'type', order: 'asc' }],
         headers: [
-          {
-            title: 'Tool Name',
-            align: 'start',
-            sortable: false,
-            key: 'name',
-          },
-          { title: 'Weight (kg)', key: 'weight' },
-          { title: 'Length (cm)', key: 'length' },
-          { title: 'Price ($)', key: 'price' },
+          { title: 'Tool Name', sortable: false, key: 'name' },
+          { title: 'Weight(kg)', key: 'weight', align: 'end' },
+          { title: 'Length(cm)', key: 'length', align: 'end' },
+          { title: 'Price($)', key: 'price', align: 'end' },
         ],
         tools: [
           { name: 'Hammer', weight: 0.5, length: 30, price: 10, type: 'hand' },
